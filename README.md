@@ -22,6 +22,7 @@ Install it from scratch, by:
 We will need the following:
 
 1. GPy:
+
    ```bash
    conda install pymc 
    ```
