@@ -21,12 +21,17 @@ Install it from scratch, by:
 ### Install packages that are not in the standard distribution
 We will need the following:
 
-1. GPy:
+1. [GPy](https://github.com/SheffieldML/GPy):
 
    ```bash
-   conda install pymc 
+   conda install GPy
    ```
-    
+
+2. [PyMC 2.3](https://pymc-devs.github.io/pymc/)
+
+    ```bash
+    conda install pymc
+    ```
 
 ### Installing packages with pip from their github repository
 This is a very useful command to remember in order to install non-standard 
