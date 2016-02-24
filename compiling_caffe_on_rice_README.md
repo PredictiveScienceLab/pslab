@@ -30,7 +30,19 @@ cd leveldb
 Then, create a file called ``./rice.mk`` containing exactly the folllowing
 stuff:
 ```
-SOURCES=db/builder.cc db/c.cc db/dbformat.cc db/db_impl.cc db/db_iter.cc db/dumpfile.cc db/filename.cc db/log_reader.cc db/log_writer.cc db/memtable.cc db/repair.cc db/table_cache.cc db/version_edit.cc db/version_set.cc db/write_batch.cc table/block_builder.cc table/block.cc table/filter_block.cc table/format.cc table/iterator.cc table/merger.cc table/table_builder.cc table/table.cc table/two_level_iterator.cc util/arena.cc util/bloom.cc util/cache.cc util/coding.cc util/comparator.cc util/crc32c.cc util/env.cc util/env_posix.cc util/filter_policy.cc util/hash.cc util/histogram.cc util/logging.cc util/options.cc util/status.cc  port/port_posix.ccMEMENV_SOURCES=helpers/memenv/memenv.ccCC=ccCXX=g++PLATFORM=OS_LINUXPLATFORM_LDFLAGS=-pthreadPLATFORM_LIBS=PLATFORM_CCFLAGS= -std=c++0x -fno-builtin-memcmp -pthread -DOS_LINUX -DLEVELDB_PLATFORM_POSIX -DSNAPPY -I$(PREFIX)/include -L$($PREFIX)/lib -lsnappyPLATFORM_CXXFLAGS= -std=c++0x -fno-builtin-memcmp -pthread -DOS_LINUX -DLEVELDB_PLATFORM_POSIX -DSNAPPY -I$(PREFIX)/include -L$(PREFIX)/lib -lsnappyPLATFORM_SHARED_CFLAGS=-fPICPLATFORM_SHARED_EXT=soPLATFORM_SHARED_LDFLAGS=-shared -Wl,-soname -Wl, -L$(PREFIX)/lib -lsnappyPLATFORM_SHARED_VERSIONED=true
+SOURCES=db/builder.cc db/c.cc db/dbformat.cc db/db_impl.cc db/db_iter.cc db/dumpfile.cc db/filename.cc db/log_reader.cc db/log_writer.cc db/memtable.cc db/repair.cc db/table_cache.cc db/version_edit.cc db/version_set.cc db/write_batch.cc table/block_builder.cc table/block.cc table/filter_block.cc table/format.cc table/iterator.cc table/merger.cc table/table_builder.cc table/table.cc table/two_level_iterator.cc util/arena.cc util/bloom.cc util/cache.cc util/coding.cc util/comparator.cc util/crc32c.cc util/env.cc util/env_posix.cc util/filter_policy.cc util/hash.cc util/histogram.cc util/logging.cc util/options.cc util/status.cc  port/port_posix.cc
+MEMENV_SOURCES=helpers/memenv/memenv.cc
+CC=cc
+CXX=g++
+PLATFORM=OS_LINUX
+PLATFORM_LDFLAGS=-pthread
+PLATFORM_LIBS=
+PLATFORM_CCFLAGS= -std=c++0x -fno-builtin-memcmp -pthread -DOS_LINUX -DLEVELDB_PLATFORM_POSIX -DSNAPPY -I$(PREFIX)/include -L$($PREFIX)/lib -lsnappy
+PLATFORM_CXXFLAGS= -std=c++0x -fno-builtin-memcmp -pthread -DOS_LINUX -DLEVELDB_PLATFORM_POSIX -DSNAPPY -I$(PREFIX)/include -L$(PREFIX)/lib -lsnappy
+PLATFORM_SHARED_CFLAGS=-fPIC
+PLATFORM_SHARED_EXT=so
+PLATFORM_SHARED_LDFLAGS=-shared -Wl,-soname -Wl, -L$(PREFIX)/lib -lsnappy
+PLATFORM_SHARED_VERSIONED=true
 ```
 Now, edit ``./Makefile`` delete the following lines:
 ```
@@ -144,10 +156,9 @@ Simply add the following to your ``$HOME/.profile``
 ```
 module load gcc
 module load protobuf
-module load hdf5/1.8.13_gcc-4.7.2
 module load atlas
 export LD_LIBRARY_PATH=$PREFIX/src/out-shared:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=
+export LD_LIBRARY_PATH=/apps/rhel6/Anaconda-2.0.1/lib:$LD_LIBRARY_PATH
 ```
 
 Install Caffe
@@ -195,4 +206,5 @@ As soon as you have done this, we are ready to compile:
 ```
 make
 make pycaffe
+make runtest
 ```
