@@ -175,7 +175,7 @@ cp Makefile.config.example Makefile.config
 ```
 Then edit ``Makefile.config`` making the following changes.
 
-+ Uncomment the ``CPU_ONLYE := 1`` line.
++ Uncomment the ``CPU_ONLY := 1`` line.
 + Set lines 50 and 51 to:
 
 ```
@@ -190,7 +190,7 @@ ANACONDA_HOME := /apps/rhel6/Anaconda-2.0.1
 ```
 + Uncomment lines 70, 71, and 72 (``PYTHON_INCLUDE``).
 + Comment line 80 (``PYTHON_LIB := /usr/lib``).
-+ Uncomment line 80 (``PYTHON_LIB := $(ANACONDA_HOME)/lib``).
++ Uncomment line 81 (``PYTHON_LIB := $(ANACONDA_HOME)/lib``).
 + Change lines 91 and 92 to:
 
 ```
