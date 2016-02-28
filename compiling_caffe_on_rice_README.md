@@ -35,13 +35,13 @@ MEMENV_SOURCES=helpers/memenv/memenv.cc
 CC=cc
 CXX=g++
 PLATFORM=OS_LINUX
-PLATFORM_LDFLAGS=-pthread
+PLATFORM_LDFLAGS=-pthread -L$(PREFIX)/lib -lsnappy
 PLATFORM_LIBS=
 PLATFORM_CCFLAGS= -std=c++0x -fno-builtin-memcmp -pthread -DOS_LINUX -DLEVELDB_PLATFORM_POSIX -DSNAPPY -I$(PREFIX)/include -L$($PREFIX)/lib -lsnappy
 PLATFORM_CXXFLAGS= -std=c++0x -fno-builtin-memcmp -pthread -DOS_LINUX -DLEVELDB_PLATFORM_POSIX -DSNAPPY -I$(PREFIX)/include -L$(PREFIX)/lib -lsnappy
 PLATFORM_SHARED_CFLAGS=-fPIC
 PLATFORM_SHARED_EXT=so
-PLATFORM_SHARED_LDFLAGS=-shared -Wl,-soname -Wl, -L$(PREFIX)/lib -lsnappy
+PLATFORM_SHARED_LDFLAGS=-shared -Wl,-soname -Wl,
 PLATFORM_SHARED_VERSIONED=true
 ```
 Now, edit ``./Makefile`` delete the following lines:
