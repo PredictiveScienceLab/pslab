@@ -156,7 +156,7 @@ Simply add the following to your ``$HOME/.profile``
 ```
 module load gcc
 module load atlas
-export LD_LIBRARY_PATH=$PREFIX/src/out-shared:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$PREFIX/src/leveldb/out-shared:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/apps/rhel6/Anaconda-2.0.1/lib:$LD_LIBRARY_PATH
 ```
 
